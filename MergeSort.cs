@@ -10,20 +10,20 @@ public class Program
 	}
 	
 	public static void mergesort(int[] arr){
-		var temp = 	new int[arr.Length];
+		var temp = new int[arr.Length];
 		mergesort(arr, temp, 0, arr.Length - 1);
 	}
 	
 	public static void mergesort(int[] arr, int[] temp, int low, int high){
 		if(low >= high) return;
-		int middle = (low + high) / 2;
+		int middle = low + (high - low) / 2;
 		mergesort(arr, temp, low, middle);
 		mergesort(arr, temp, middle + 1, high);
 		merge(arr, temp, low, middle, high);
 	}
 	
 	public static void merge(int[] arr, int[] temp, int low, int middle, int high){
-		for(int i = 0; i <= high; i++) temp[i] = arr[i];
+		for(int i = low; i <= high; i++) temp[i] = arr[i];
 		
 		int tempLeft = low;
 		int tempRight = middle + 1;
